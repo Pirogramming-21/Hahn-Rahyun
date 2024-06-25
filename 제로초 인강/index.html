@@ -86,7 +86,7 @@
         #wrap-center {
             width: 1280px;
             display: inline-block;
-            background-color: yellow;
+            background-color: white;
         }
         #header {
             text-align: left;
@@ -194,6 +194,7 @@
                 #search > form:hover {
                     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 12);
                 }
+                
                 #search > form > input {
                     width: 480px;
                     height: 100%;
@@ -219,6 +220,21 @@
                     height: 100%;
                     margin-right: 12px;
                     padding-left: 10px;
+                    position: relative;
+                }
+                
+                #search-svg::after {
+                    display: none;
+                }
+                #search > form:focus-within #search-svg::after {
+                    content: '';
+                    width: 1px;
+                    height: 20px;
+                    background-color: #e4e4e4;
+                    position: absolute;
+                    display: inline-block;
+                    right: 0px;
+                    top: 20px;
                 }
                 #search-svg svg {
                     width: 24px;
