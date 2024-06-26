@@ -172,6 +172,10 @@
                     border: 1px solid #cccccc;
                     border-radius: 5px;
                 }
+                #main-form input:focus {
+                    border-width: 0;
+                    background-color: rgb(203, 218, 243);
+                }
                 #password-hint {
                     font-size: 12px;
                     color: #666666;
@@ -212,13 +216,13 @@
                 <div id="main-form">
                     <form>
                         <label for="username">Username</label>
-                        <input type="text" id="username" name="username" value="InKyeongBae">
+                        <input type="text" id="username" name="username">
                         
                         <label for="email">Email</label>
                         <input type="email" id="email" name="email">
                         
                         <label for="password">Password</label>
-                        <input type="password" id="password" name="password" value="********">
+                        <input type="password" id="password" name="password">
                         
                         <p id="password-hint">Make sure it's at least 15 characters OR at least 8 characters including a number and a lowercase letter. <a href="#">Learn more.</a></p>
                         
@@ -230,7 +234,21 @@
                     </form>
                 </div>
             </div>
-            <div id="bottom"></div>
+            <style>
+                #bottom {
+                    width: 770px;
+                    position: fixed;
+                    bottom: 0;
+                    right: 0;
+                }
+                #bottom-img {
+                    margin: 0;
+                    padding: 0;
+                }
+            </style>
+            <div id="bottom">
+                <img src="./bottom.png" class="bottom-img">
+            </div>
         </div>
     </div>
 </body>
