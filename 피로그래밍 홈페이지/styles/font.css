@@ -1,0 +1,12 @@
+@font-face {
+    font-family: 'nexon-regular';
+    src: url(./TTF/NEXON\ Lv2\ Gothic.ttf);
+}
+@font-face {
+    font-family: 'nexon-medium';
+    src: url(./TTF/NEXON\ Lv2\ Gothic\ Medium.ttf);
+}
+@font-face {
+    font-family: 'nexon-light';
+    src: url(./TTF/NEXON\ Lv2\ Gothic\ Light.ttf);
+}

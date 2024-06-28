@@ -29,9 +29,14 @@ main {
     font-weight: 700;
     gap: 2rem;
 }
-.main-header--container > ul > li:nth-child(1) {
+.main-header--container > ul > li:nth-child(3) {
     color: var(--green);
 }
-.main-header--container > ul > li:hover {
-    color: var(--green);
+
+.main-header--container > ul > li {
+    padding: 5px;
+    display: flex;
+}
+.main-header--container > ul > li a {
+    font-family: 'nexon-regular';
 }
