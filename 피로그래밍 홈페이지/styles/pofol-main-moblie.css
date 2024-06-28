@@ -74,7 +74,7 @@
 .pj-hamburger > div:nth-child(3) {
     margin-left: auto;
 }
-.pj-container:hover .pj-hamburger > div:nth-child(1), .pj-container:hover .pj-hamburger > div:nth-child(1) {
+.pj-container:hover .pj-hamburger > div:nth-child(1), .pj-container:hover .pj-hamburger > div:nth-child(3) {
     width: 50%;
 } 
 

@@ -1,0 +1,124 @@
+.interview-contents {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 16px;
+    margin-bottom: 40px;
+}
+
+@media screen and (max-width: 850px) {
+    .interview-contents {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .interview-contents {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+.interview-box {
+    background-color: #333333;
+    border-radius: 10px;
+    padding: 16px;
+    cursor: pointer;
+    position: relative;
+}
+
+.interview-box:hover {
+    top: -2px;
+}
+
+.interview-hamburger {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: 16px;
+    top: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.interview-hamburger > div {
+    width: 100%;
+    height: 2px;
+    background-color: rgba(236, 236, 236, 0.466);
+    transition: 0.3s;
+}
+
+.interview-hamburger > div:nth-child(1) {
+    margin-right: auto;
+}
+
+.interview-hamburger > div:nth-child(3) {
+    margin-left: auto;
+}
+
+.interview-box:hover .interview-hamburger > div:nth-child(1), .interview-box:hover .interview-hamburger > div:nth-child(3) {
+    width: 50%;
+}
+
+.interview-box:hover .interview-profile--pic img {
+    transform: scale(1.1);
+}
+
+.interview-header {
+    display: flex;
+    gap: 16px;
+}
+
+.interview-profile--pic {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.interview-profile--pic img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.3s;
+}
+
+.interview-header--header {
+    font-family: 'nexon-regular';
+    font-size: var(--subheading);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    justify-content: center;
+}
+
+.major-badge, .non-major-badge, .double-major-badge {
+    padding: 6px 8px;
+    font-size: 1.4rem;
+    border-radius: 5px;
+    color: #fff;
+}
+
+.major-badge {
+    background: #2188b6;
+}
+
+.non-major-badge {
+    background: #c54422;
+}
+
+.double-major-badge {
+    background: #35a67b;
+}
+
+.interviewee-cookie {
+    font-family: 'nexon-regular';
+    font-size: 1.6rem;
+    padding-top: 16px;
+    line-height: 2rem;
+}
+
+.interviewee {
+    font-family: 'nexon-medium';
+    font-size: 1.6rem;
+}
