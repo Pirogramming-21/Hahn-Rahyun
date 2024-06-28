@@ -1,0 +1,25 @@
+.main-nav--container {
+    font-family: 'nexon-regular';
+    height: 55px;
+    display: flex;
+}
+
+#nav-curr {
+    font-family: 'nexon-regular';
+    font-size: 2.1rem;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-left: 40px;
+}
+
+#nav-prev {
+    font-family: 'nexon-regular';
+    font-size: 1.5rem;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-right: 40px;
+}
