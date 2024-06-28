@@ -37,6 +37,10 @@ main {
     padding: 5px;
     display: flex;
 }
+.main-header--container > ul > li:hover {
+    position: relative;
+    top: -2px;
+}
 .main-header--container > ul > li a {
     font-family: 'nexon-regular';
 }

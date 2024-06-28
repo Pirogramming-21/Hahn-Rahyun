@@ -29,6 +29,10 @@ main {
     font-weight: 700;
     gap: 2rem;
 }
+.main-header--container > ul > li:hover {
+    position: relative;
+    top: -2px;
+}
 .main-header--container > ul > li:nth-child(4) {
     color: var(--green);
 }
