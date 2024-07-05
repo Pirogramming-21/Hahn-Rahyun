@@ -27,5 +27,7 @@ while True:
     current_player = players[turn]
     input_number = get_input(current_player)
     if Game(current_player, input_number):
+        winner = players[1 - turn]
+        print(f"{winner} win!")
         break
     turn = 1 - turn
