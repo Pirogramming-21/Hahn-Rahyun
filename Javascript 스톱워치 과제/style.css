@@ -101,6 +101,7 @@
 .record_box_header {
     width: 460px;
     height: 60px;
+    padding: 5px;
     background-color: lightgrey;
     border-top-left-radius: 21px;
     border-top-right-radius: 21px;
@@ -134,4 +135,8 @@
 .record_display_container > span {
     font-size: 20px;
     font-weight: bold;
+}
+
+#delete-btn:hover {
+    color: chocolate;
 }
