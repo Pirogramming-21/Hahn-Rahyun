@@ -104,7 +104,7 @@ function start() {
         appendMseconds.innerHTML = mseconds;
     } else {
         seconds++;
-        appendSeconds.innerHTML = seconds;
+        appendSeconds.innerHTML = `${seconds < 10 ? "0" + seconds : seconds}`;
 
         mseconds = 0;
         appendMseconds.innerHTML = 0;
