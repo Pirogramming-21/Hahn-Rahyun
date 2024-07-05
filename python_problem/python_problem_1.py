@@ -1,6 +1,8 @@
 num = 0
 
 def get_input(player):
+    if player == "computer":
+        return random.randint(1, 3)
     while True:
         try:
             input_number = int(input(f"{player}, 부를 숫자의 개수를 입력하세요(1, 2, 3만 입력 가능): "))
@@ -21,7 +23,7 @@ def brGame(player):
             return True
     return False
 
-players = ["playerA", "playerB"]
+players = ["computer", "player"]
 turn = 0
 
 while True:
