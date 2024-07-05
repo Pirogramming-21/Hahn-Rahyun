@@ -1,6 +1,6 @@
 num = 0
 
-def is_valid(player):
+def get_input(player):
     while True:
         try:
             input_number = int(input(f"{player}, 부를 숫자의 개수를 입력하세요(1, 2, 3만 입력 가능): "))
@@ -11,8 +11,9 @@ def is_valid(player):
         except ValueError:
             print("정수를 입력하세요")
 
-def Game(player, number):
+def brGame(player):
     global num
+    count = get_input(player)
     for i in range(number):
         num += 1
         print(f"{player} : {num}")
@@ -25,8 +26,7 @@ turn = 0
 
 while True:
     current_player = players[turn]
-    input_number = get_input(current_player)
-    if Game(current_player, input_number):
+    if brGame(current_player):
         winner = players[1 - turn]
         print(f"{winner} win!")
         break
