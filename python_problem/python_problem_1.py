@@ -16,3 +16,16 @@ def Game(player, number):
     for i in range(number):
         num += 1
         print(f"{player} : {num}")
+        if num >= 31:
+            return True
+    return False
+
+players = ["playerA", "playerB"]
+turn = 0
+
+while True:
+    current_player = players[turn]
+    input_number = get_input(current_player)
+    if Game(current_player, input_number):
+        break
+    turn = 1 - turn
