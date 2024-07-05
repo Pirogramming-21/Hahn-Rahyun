@@ -1,3 +1,5 @@
+import random
+
 num = 0
 
 def get_input(player):
@@ -15,7 +17,7 @@ def get_input(player):
 
 def brGame(player):
     global num
-    count = get_input(player)
+    number = get_input(player)
     for i in range(number):
         num += 1
         print(f"{player} : {num}")
