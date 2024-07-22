@@ -1,0 +1,15 @@
+header {
+    /* position: sticky;
+    top: 0; */
+    width: 80%;
+    margin: 20px auto;
+    background-image: linear-gradient(315deg, #55EE94, #AFFFEE);
+    border-radius: 10px;
+}
+
+.header__container {
+    padding: 20px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+}

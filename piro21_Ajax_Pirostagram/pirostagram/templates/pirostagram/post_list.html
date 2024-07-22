@@ -1,0 +1,108 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="main__container">
+        {% for post in posts %}
+            <div class="card post__container post-id-{{ post.id }}">
+                <div class="card-body">
+                    <div class="post__img">
+                        <img src="{% static 'img/하니.png' %}" alt="...">
+                    </div>
+                    <div class="card-title">{{ post.title }}</div>
+                    <div class="card-text">{{ post.content }}</div>
+                    <div class="btn btn-primary post__like" onclick="onClickLike({{ post.id }}, 'like')">Like {{ post.like }}</div>
+                    <div class="btn btn-primary post__dislike" onclick="onClickLike({{ post.id }}, 'dislike')">Dislike {{ post.dislike }}</div>
+
+                    <!-- Comment form -->
+                    <form action="{% url 'pirostagram:add_comment' post.id %}" method="post" class="comment-form">
+                        {% csrf_token %}
+                        <input type="hidden" name="author" value="{% if user.is_authenticated %}{{ user.username }}{% else %}Anonymous{% endif %}">
+                        <input type="text" name="comment" placeholder="Add a comment..." required>
+                        <button type="submit" class="btn btn-secondary">댓글 달기</button>
+                    </form>
+
+                    <!-- Comment list -->
+                    <ul class="comment-list">
+                        {% for comment in post.comments.all %}
+                            <li class="comment" id="comment-{{ comment.id }}">
+                                {{ comment.content }} - <span>{{ comment.author.username|default:"Anonymous" }}</span>
+                                <button onclick="deleteComment({{ comment.id }})">삭제</button>
+                            </li>
+                        {% empty %}
+                            <li>No comments yet.</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+
+{% block extra %}
+<script>
+    const requestLike = new XMLHttpRequest();
+
+    const onClickLike = (id, type) => {
+        const url = "/like/";
+        requestLike.open("POST", url, true);
+        requestLike.setRequestHeader(
+            "Content-Type",
+            "application/x-www-form-urlencoded"
+        );
+        requestLike.send(JSON.stringify({id: id, type: type}));
+    }
+
+    requestLike.onreadystatechange = () => {
+        if (requestLike.readyState === XMLHttpRequest.DONE) {
+            if (requestLike.status < 400) {
+                const {id, type} = JSON.parse(requestLike.response);
+                const element = document.querySelector(`.post-id-${id} .post__${type}`);
+                const originHTML = element.innerHTML;
+                const [buttonType, num] = originHTML.split(" ");
+                const count = Number(num) + 1;
+                
+                element.innerHTML = `${buttonType} ${count}`;
+            }
+        }
+    }
+
+    // 댓글 삭제 함수
+    function deleteComment(commentId) {
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', '/delete_comment/', true);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.setRequestHeader('X-CSRFToken', getCookie('csrftoken'));
+
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                const data = JSON.parse(xhr.responseText);
+                if (data.success) {
+                    const commentElement = document.getElementById(`comment-${commentId}`);
+                    commentElement.remove();
+                }
+            }
+        };
+
+        xhr.send(JSON.stringify({
+            comment_id: commentId
+        }));
+    }
+
+    // CSRF 토큰을 가져오는 함수
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+</script>
+{% endblock %}

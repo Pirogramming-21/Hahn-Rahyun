@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <div class="container">
+        <h2>댓글 작성</h2>
+        <form action="{% url 'pirostagram:add_comment' post.id %}" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="comment">댓글 내용</label>
+                <textarea id="comment" name="comment" rows="4" class="form-control" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">댓글 작성</button>
+        </form>
+    </div>
+{% endblock %}
