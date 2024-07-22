@@ -57,13 +57,11 @@ def add_comment(request, post_id):
         author = request.POST.get('author', 'Anonymous')
         comment_content = request.POST.get('comment')
 
-        # Create a Comment instance
         comment = Comment(
             post=post,
             content=comment_content
         )
         
-        # If authenticated, use request.user
         if request.user.is_authenticated:
             comment.author = request.user
         else:
@@ -73,7 +71,6 @@ def add_comment(request, post_id):
         
         return redirect('pirostagram:post_list')  # 댓글 작성 후 post_list 페이지로 리다이렉트
 
-    # Handle GET request if needed
     return render(request, 'pirostagram:post_list.html')
 
 
